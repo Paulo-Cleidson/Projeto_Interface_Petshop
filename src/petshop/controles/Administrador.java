@@ -41,6 +41,15 @@ public class Administrador {
         return null;
     }
 
+    public Servico verificaServico (String string) {
+        for (int i=0; i < servicos.size(); i++) {
+            if (servicos.get(i).getTipo().equals(string)) {
+                return servicos.get(i);
+            }
+        }
+        return null;
+    }
+
     public void removerCliente(Cliente cliente) {
         clientes.remove(cliente);
     }
@@ -57,12 +66,12 @@ public class Administrador {
         servicos.add(servico);
     }
 
-    public void addAgendamento(Agendamentos agendamento) {
-        listaAgendamentos.add(agendamento);
-    }
-
     public ArrayList<Servico> getServicos() {
         return this.servicos;
+    }
+
+    public void addAgendamento(Agendamentos agendamento) {
+        listaAgendamentos.add(agendamento);
     }
 
     public ArrayList<Agendamentos> getListaAgendamentos() {

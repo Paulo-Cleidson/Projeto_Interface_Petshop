@@ -6,7 +6,7 @@ public class Pet {
     private String especie;
     private String raca;
     private int idade;
-    private Object[] atributos;
+
 
     public Pet(String nomePet, String especie, String raca, int idade) throws Exception {
 
@@ -14,8 +14,6 @@ public class Pet {
         this.especie = especie;
         this.raca = raca;
         this.idade = idade;
-
-        atributos = new Object[]{this.nomePet, this.especie, this.raca, this.idade};
 
         if(nomePet == null || nomePet.trim().isEmpty()){
             throw new Exception("Preencha o nome do pet! ");
@@ -29,10 +27,6 @@ public class Pet {
         if (idade < 0){
             throw new Exception("Idade inválida!");
         }
-    }
-
-    public Object[] getAtributos() {
-        return atributos;
     }
 
     @Override

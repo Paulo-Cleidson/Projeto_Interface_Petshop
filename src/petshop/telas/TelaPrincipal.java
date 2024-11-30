@@ -154,6 +154,14 @@ public class TelaPrincipal extends JFrame {
         agendamentos.setForeground(new Color(0, 48, 73));
         add(agendamentos);
 
+        agendamentos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TelaAgendamentos telaAgendamentos = new TelaAgendamentos(administrador);
+                telaAgendamentos.setVisible(true);
+            }
+        });
+
     }
 
 }

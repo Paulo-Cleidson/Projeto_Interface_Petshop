@@ -13,6 +13,4 @@ public class ProdutoTeste {
         assertEquals("Ração", produto1.getNomeProduto());
     }
 
-
-
 }

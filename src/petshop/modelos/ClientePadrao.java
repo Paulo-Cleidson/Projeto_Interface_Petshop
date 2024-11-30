@@ -132,4 +132,8 @@ public class ClientePadrao implements Cliente {
         return this.listaPetsCliente;
     }
 
+    public int verificapetlist(Pet pet){
+        return this.listaPetsCliente.size();
+    }
+
 }
