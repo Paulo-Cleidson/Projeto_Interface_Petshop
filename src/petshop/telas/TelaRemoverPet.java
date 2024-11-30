@@ -41,10 +41,20 @@ public class TelaRemoverPet extends JFrame {
 
         JComboBox<String> listaDePets = new JComboBox<>();
         listaDePets.setBounds(120,60,240,24);
-        for(int i=0; i < administrador.verificaCliente(String.valueOf(listaDeClientes.getSelectedItem())).getListaPetsCliente().size(); i++){
-            Pet p1 = (Pet) administrador.verificaCliente(String.valueOf(listaDeClientes.getSelectedItem())).getListaPetsCliente().get(i);
-            listaDePets.addItem(p1.getNomePet());
-        }
+
+        listaDeClientes.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listaDePets.removeAllItems(); // Limpa os pets atuais
+                Cliente clienteSelecionado = administrador.verificaCliente((String) listaDeClientes.getSelectedItem());
+                if (clienteSelecionado != null) {
+                    for (int i=0; i < clienteSelecionado.getListaPetsCliente().size(); i++) {
+                        Pet pet = (Pet) clienteSelecionado.getListaPetsCliente().get(i);
+                        listaDePets.addItem(pet.getNomePet());
+                    }
+                }
+            }
+        });
         add(listaDePets);
 
         removerPet = new JButton("Remover Pet");
