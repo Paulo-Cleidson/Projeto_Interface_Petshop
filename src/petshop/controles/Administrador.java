@@ -22,16 +22,6 @@ public class Administrador {
         this.clientes.add(cliente);
     }
 
-    public String exibirPetsClientes() {
-        //o StringBuilder serve para concatenar os textos em vez de imprimir diretamente no console.
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < clientes.size(); i++) {
-            sb.append(clientes.get(i).getNome()).append("\n"); // Adiciona o cliente atual na variavel sb do StringBuilder
-            sb.append(clientes.get(i).exibirPets()).append("\n"); // Adiciona os pets do cliente
-        }
-        return sb.toString();
-    }
-
     public Cliente verificaCliente (String nome) {
         for (int i=0; i < clientes.size(); i++) {
             if (clientes.get(i).getNome().equals(nome)) {
@@ -45,6 +35,15 @@ public class Administrador {
         for (int i=0; i < servicos.size(); i++) {
             if (servicos.get(i).getTipo().equals(string)) {
                 return servicos.get(i);
+            }
+        }
+        return null;
+    }
+
+    public Agendamentos verificaAgendamento(String string) {
+        for (Agendamentos agendamento : listaAgendamentos) {
+            if(agendamento.toString().equals(string)) {
+                return agendamento;
             }
         }
         return null;
@@ -74,8 +73,16 @@ public class Administrador {
         listaAgendamentos.add(agendamento);
     }
 
+    public void removerAgendamento(Agendamentos agendamento) {
+        listaAgendamentos.remove(agendamento);
+    }
+
     public ArrayList<Agendamentos> getListaAgendamentos() {
         return this.listaAgendamentos;
+    }
+
+    public void removeServico(Servico servico) {
+        servicos.remove(servico);
     }
 
 }

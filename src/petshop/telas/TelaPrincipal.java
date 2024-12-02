@@ -1,11 +1,9 @@
 package petshop.telas;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import petshop.controles.Administrador;
 import petshop.modelos.Cliente;
 import petshop.modelos.Produto;
@@ -13,15 +11,7 @@ import petshop.modelos.Servico;
 
 public class TelaPrincipal extends JFrame {
 
-    private DefaultTableModel modelEstoque;
-    private JTable tabelEstoque;
-    private JScrollPane scrollEstoque;
-    private DefaultTableModel model;
-    private JTable tabel;
-    private JScrollPane scrollClientes;
-    private DefaultTableModel modelServicos;
-    private JTable tabelServicos;
-    private JScrollPane scrollServicos;
+    private JLabel textoInicial;
 
     public TelaPrincipal(Administrador administrador) {
 
@@ -33,36 +23,56 @@ public class TelaPrincipal extends JFrame {
         setLocationRelativeTo(null);
         setLayout(null);
 
-        JButton cadastrarCliente = new JButton("Área Clientes");
-        cadastrarCliente.setBounds(50, 50, 200, 30);
-        cadastrarCliente.setFont(new Font("Arial", Font.BOLD, 15));
-        cadastrarCliente.setForeground(new Color(0, 48, 73));
-        add(cadastrarCliente);
+        textoInicial = new JLabel("======================================================================");
+        textoInicial.setBounds(32, 270, 700, 20);
+        textoInicial.setFont(new Font("Arial", Font.BOLD, 17));
+        textoInicial.setForeground(new Color(0, 48, 73));
+        add(textoInicial);
 
-        cadastrarCliente.addActionListener(e -> {
+        JButton areaCliente = new JButton("Área Clientes");
+        areaCliente.setBounds(270, 50, 200, 30);
+        areaCliente.setFont(new Font("Arial", Font.BOLD, 15));
+        areaCliente.setForeground(new Color(0, 48, 73));
+        add(areaCliente);
+
+        areaCliente.addActionListener(e -> {
             TelaCadastraCliente telaCliente = new TelaCadastraCliente(administrador);
             telaCliente.setVisible(true);
         });
 
         JButton exibirClientes = new JButton("Exibir Clientes");
-        exibirClientes.setBounds(270, 50, 200, 30);
+        exibirClientes.setBounds(500, 50, 200, 30);
         exibirClientes.setFont(new Font("Arial", Font.BOLD, 15));
         exibirClientes.setForeground(new Color(0, 48, 73));
         add(exibirClientes);
 
-        model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel(){
+            // Impede a edição de todas as células
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         model.addColumn("Nome");
         model.addColumn("E-mail");
         model.addColumn("CPF");
         model.addColumn("Contato");
         model.addColumn("Data Nasc.");
-        tabel = new JTable(model);
-        scrollClientes = new JScrollPane(tabel);
-        scrollClientes.setBounds(30, 290, 700, 250);
+        JTable tabel = new JTable(model);
+        JScrollPane scrollClientes = new JScrollPane(tabel);
+        scrollClientes.setBounds(30, 300, 700, 230);
 
         exibirClientes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                textoInicial.setText("Lista de Clientes Cadastrados:");
+                // Remove todos os JScrollPane
+                Component[] components = getContentPane().getComponents();
+                for (Component component : components) {
+                    if (component instanceof JScrollPane) {
+                        remove(component); // Remove o componente do contêiner
+                    }
+                }
                 model.setRowCount(0);
                 add(scrollClientes);
                 for(Cliente cliente: administrador.getClientes()){
@@ -72,8 +82,22 @@ public class TelaPrincipal extends JFrame {
             }
         });
 
+        JButton exibirPets = new JButton("Exibir Pets");
+        exibirPets.setBounds(50, 200, 200, 30);
+        exibirPets.setFont(new Font("Arial", Font.BOLD, 15));
+        exibirPets.setForeground(new Color(0, 48, 73));
+        add(exibirPets);
+
+        exibirPets.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TelaExibePets telaExibePets = new TelaExibePets(administrador);
+                telaExibePets.setVisible(true);
+            }
+        });
+
         JButton estoque = new JButton("Estoque");
-        estoque.setBounds(50, 100, 200, 30);
+        estoque.setBounds(270, 100, 200, 30);
         estoque.setFont(new Font("Arial", Font.BOLD, 15));
         estoque.setForeground(new Color(0, 48, 73));
         add(estoque);
@@ -87,21 +111,33 @@ public class TelaPrincipal extends JFrame {
         });
 
         JButton exibirEstoque = new JButton("Exibir Estoque");
-        exibirEstoque.setBounds(270, 100, 200, 30);
+        exibirEstoque.setBounds(500, 100, 200, 30);
         exibirEstoque.setFont(new Font("Arial", Font.BOLD, 15));
         exibirEstoque.setForeground(new Color(0, 48, 73));
         add(exibirEstoque);
 
-        modelEstoque = new DefaultTableModel();
+        DefaultTableModel modelEstoque = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         modelEstoque.addColumn("Produto");
         modelEstoque.addColumn("Preço");
-        tabelEstoque = new JTable(modelEstoque);
-        scrollEstoque = new JScrollPane(tabelEstoque);
-        scrollEstoque.setBounds(30, 290, 700, 250);
+        JTable tabelEstoque = new JTable(modelEstoque);
+        JScrollPane scrollEstoque = new JScrollPane(tabelEstoque);
+        scrollEstoque.setBounds(30, 300, 700, 230);
 
         exibirEstoque.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                textoInicial.setText("Lista de Produtos em Estoque:");
+                Component[] components = getContentPane().getComponents();
+                for (Component component : components) {
+                    if (component instanceof JScrollPane) {
+                        remove(component);
+                    }
+                }
                 modelEstoque.setRowCount(0);
                 add(scrollEstoque);
                 for(Produto produto: administrador.getEstoque().getListaProdutos()){
@@ -111,7 +147,7 @@ public class TelaPrincipal extends JFrame {
         });
 
         JButton cadastrarServico = new JButton("Cadastrar Serviços");
-        cadastrarServico.setBounds(50, 150, 200, 30);
+        cadastrarServico.setBounds(270, 150, 200, 30);
         cadastrarServico.setFont(new Font("Arial", Font.BOLD, 15));
         cadastrarServico.setForeground(new Color(0, 48, 73));
         add(cadastrarServico);
@@ -124,15 +160,20 @@ public class TelaPrincipal extends JFrame {
             }
         });
 
-        modelServicos = new DefaultTableModel();
+        DefaultTableModel modelServicos = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         modelServicos.addColumn("Tipo de Serviço");
         modelServicos.addColumn("Valor do Serviço");
-        tabelServicos = new JTable(modelServicos);
-        scrollServicos = new JScrollPane(tabelServicos);
-        scrollServicos.setBounds(30, 290, 700, 250);
+        JTable tabelServicos = new JTable(modelServicos);
+        JScrollPane scrollServicos = new JScrollPane(tabelServicos);
+        scrollServicos.setBounds(30, 300, 700, 230);
 
         JButton exibirServico = new JButton("Exibir Serviços");
-        exibirServico.setBounds(270, 150, 200, 30);
+        exibirServico.setBounds(500, 150, 200, 30);
         exibirServico.setFont(new Font("Arial", Font.BOLD, 15));
         exibirServico.setForeground(new Color(0, 48, 73));
         add(exibirServico);
@@ -140,6 +181,13 @@ public class TelaPrincipal extends JFrame {
         exibirServico.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                textoInicial.setText("Lista de Serviços Cadastrados:");
+                Component[] components = getContentPane().getComponents();
+                for (Component component : components) {
+                    if (component instanceof JScrollPane) {
+                        remove(component);
+                    }
+                }
                 modelServicos.setRowCount(0);
                 add(scrollServicos);
                 for(Servico servico: administrador.getServicos()){
@@ -149,7 +197,7 @@ public class TelaPrincipal extends JFrame {
         });
 
         JButton agendamentos = new JButton("Agendamentos");
-        agendamentos.setBounds(50, 200, 200, 30);
+        agendamentos.setBounds(270, 200, 200, 30);
         agendamentos.setFont(new Font("Arial", Font.BOLD, 15));
         agendamentos.setForeground(new Color(0, 48, 73));
         add(agendamentos);
@@ -160,6 +208,44 @@ public class TelaPrincipal extends JFrame {
                 TelaAgendamentos telaAgendamentos = new TelaAgendamentos(administrador);
                 telaAgendamentos.setVisible(true);
             }
+        });
+
+        DefaultTableModel modelAgendamentos = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        modelAgendamentos.addColumn("Nome do Cliente");
+        modelAgendamentos.addColumn("Serviço Agendado");
+        JTable tabelAgendamentos = new JTable(modelAgendamentos);
+        JScrollPane scrollAgendamentos = new JScrollPane(tabelAgendamentos);
+        scrollAgendamentos.setBounds(30, 300, 700, 230);
+
+        JButton exibirAgendamentos = new JButton("Exibir Agendamentos");
+        exibirAgendamentos.setBounds(500, 200, 200, 30);
+        exibirAgendamentos.setFont(new Font("Arial", Font.BOLD, 15));
+        exibirAgendamentos.setForeground(new Color(0, 48, 73));
+        add(exibirAgendamentos);
+
+        exibirAgendamentos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textoInicial.setText("Lista de Serviços Agendados:");
+                Component[] components = getContentPane().getComponents();
+                for (Component component : components) {
+                    if (component instanceof JScrollPane) {
+                        remove(component);
+                    }
+                }
+                modelAgendamentos.setRowCount(0);
+                add(scrollAgendamentos);
+                for(int i=0; i < administrador.getListaAgendamentos().size(); i++)
+                    modelAgendamentos.addRow(new Object[]{administrador.getListaAgendamentos().
+                            get(i).getCliente().getNome(), administrador.getListaAgendamentos().
+                            get(i).getServico().getTipo()});
+                }
+
         });
 
     }

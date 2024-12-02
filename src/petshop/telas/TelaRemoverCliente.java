@@ -10,8 +10,6 @@ import java.awt.event.ActionListener;
 
 public class TelaRemoverCliente extends JFrame {
 
-    private JButton removerCliente;
-
     public TelaRemoverCliente(Administrador administrador) {
 
         setTitle("Remover Cliente");
@@ -33,7 +31,7 @@ public class TelaRemoverCliente extends JFrame {
         }
         add(listaDeClientes);
 
-        removerCliente = new JButton("Remover Cliente");
+        JButton removerCliente = new JButton("Remover Cliente");
         removerCliente.setBounds(30, 70, 130, 25);
         removerCliente.setForeground(new Color(0, 48, 73));
         removerCliente.setFont(new Font("Arial", Font.BOLD, 12));
@@ -45,7 +43,9 @@ public class TelaRemoverCliente extends JFrame {
                 String nome = String.valueOf(listaDeClientes.getSelectedItem());
                 administrador.removerCliente(administrador.verificaCliente(nome));
                 JOptionPane.showMessageDialog(null, "Cliente removido");
+
             }
+
         });
 
     }

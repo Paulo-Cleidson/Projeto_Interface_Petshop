@@ -12,12 +12,11 @@ public class TelaCadastrarServico extends JFrame {
 
     private JTextField nomeServico;
     private JTextField valorServico;
-    private JButton cadastrarServico;
 
     public TelaCadastrarServico (Administrador administrador) {
 
         setTitle("Cadastro de Serviços");
-        setSize(380, 230);
+        setSize(390, 220);
         getContentPane().setBackground(new Color(102, 155, 188));
         setResizable(false);
         setLocationRelativeTo(null);
@@ -45,10 +44,10 @@ public class TelaCadastrarServico extends JFrame {
         valorServico.setBounds(140, 90, 180, 25);
         add(valorServico);
 
-        cadastrarServico = new JButton("Cadastrar Serviço");
-        cadastrarServico.setBounds(15, 140, 140, 25);
+        JButton cadastrarServico = new JButton("Cadastrar Serviço");
+        cadastrarServico.setBounds(10, 140, 160, 25);
         cadastrarServico.setForeground(new Color(0, 48, 73));
-        cadastrarServico.setFont(new Font("Arial", Font.BOLD, 11));
+        cadastrarServico.setFont(new Font("Arial", Font.BOLD, 12));
         add(cadastrarServico);
 
         cadastrarServico.addActionListener(new ActionListener() {
@@ -59,9 +58,25 @@ public class TelaCadastrarServico extends JFrame {
                 Servico servico = new Servico(nomeDoServico, valorDoServico);
                 administrador.addServicos(servico);
 
-                JOptionPane.showMessageDialog(null,"Serviço cadastrado" + servico.toString());
+                JOptionPane.showMessageDialog(null,
+                        "Serviço cadastrado" + servico.toString());
                 nomeServico.setText("");
                 valorServico.setText("");
+            }
+        });
+
+        JButton editarServico = new JButton("Editar/Remover Serviço");
+        editarServico.setBounds(180, 140, 170, 25);
+        editarServico.setForeground(new Color(0, 48, 73));
+        editarServico.setFont(new Font("Arial", Font.BOLD, 12));
+        add(editarServico);
+
+        editarServico.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TelaEditarRemoverServicos telaEditarRemoverServicos =
+                        new TelaEditarRemoverServicos(administrador);
+                telaEditarRemoverServicos.setVisible(true);
             }
         });
 

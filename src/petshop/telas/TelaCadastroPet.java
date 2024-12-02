@@ -20,7 +20,7 @@ public class TelaCadastroPet extends JFrame {
     public TelaCadastroPet(Administrador administrador) {
 
         setTitle("Cadastro de Pets");
-        setSize(380, 300);
+        setSize(380, 310);
         getContentPane().setBackground(new Color(102, 155, 188));
         setResizable(false);
         setLocationRelativeTo(null);

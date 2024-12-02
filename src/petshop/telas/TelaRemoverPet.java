@@ -11,12 +11,10 @@ import java.awt.event.ActionListener;
 
 public class TelaRemoverPet extends JFrame {
 
-    private JButton removerPet;
-
     public TelaRemoverPet(Administrador administrador) {
 
         setTitle("Remover Pet");
-        setSize(390, 180);
+        setSize(390, 190);
         getContentPane().setBackground(new Color(102, 155, 188));
         setResizable(false);
         setLocationRelativeTo(null);
@@ -46,7 +44,8 @@ public class TelaRemoverPet extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 listaDePets.removeAllItems(); // Limpa os pets atuais
-                Cliente clienteSelecionado = administrador.verificaCliente((String) listaDeClientes.getSelectedItem());
+                Cliente clienteSelecionado = administrador.
+                        verificaCliente((String) listaDeClientes.getSelectedItem());
                 if (clienteSelecionado != null) {
                     for (int i=0; i < clienteSelecionado.getListaPetsCliente().size(); i++) {
                         Pet pet = (Pet) clienteSelecionado.getListaPetsCliente().get(i);
@@ -57,7 +56,7 @@ public class TelaRemoverPet extends JFrame {
         });
         add(listaDePets);
 
-        removerPet = new JButton("Remover Pet");
+        JButton removerPet = new JButton("Remover Pet");
         removerPet.setBounds(30, 110, 130, 25);
         removerPet.setForeground(new Color(0, 48, 73));
         removerPet.setFont(new Font("Arial", Font.BOLD, 12));
@@ -66,11 +65,13 @@ public class TelaRemoverPet extends JFrame {
         removerPet.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                administrador.verificaCliente(String.valueOf(listaDeClientes.getSelectedItem()))
-                        .removerPet(administrador.verificaCliente(String.valueOf(listaDeClientes.
-                                getSelectedItem())).verificaPet(String.valueOf(listaDePets.getSelectedItem())));
+                // trabalho da p**** pra remover um pet :D
+                administrador.verificaCliente(String.valueOf(listaDeClientes.getSelectedItem())).removerPet(administrador.verificaCliente(String.valueOf(listaDeClientes.getSelectedItem())).verificaPet(String.valueOf(listaDePets.getSelectedItem())));
+
                 JOptionPane.showMessageDialog(null, "Pet Removido");
+
             }
+
         });
 
     }
