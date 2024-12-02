@@ -7,7 +7,6 @@ public class Pet {
     private String raca;
     private int idade;
 
-
     public Pet(String nomePet, String especie, String raca, int idade) throws Exception {
 
         this.nomePet = nomePet;

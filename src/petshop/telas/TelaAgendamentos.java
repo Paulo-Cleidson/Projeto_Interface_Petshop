@@ -12,14 +12,13 @@ import java.awt.event.ActionListener;
 
 public class TelaAgendamentos extends JFrame {
 
-    private JButton agendar;
     private Cliente clienteselecionado;
     private Servico servicoSelecionado;
 
     public TelaAgendamentos(Administrador administrador) {
 
         setTitle("Cadastrar Agendamento");
-        setSize(360, 280);
+        setSize(360, 250);
         getContentPane().setBackground(new Color(102, 155, 188));
         setResizable(false);
         setLocationRelativeTo(null);
@@ -51,9 +50,9 @@ public class TelaAgendamentos extends JFrame {
         }
         add(listaDeServicos);
 
-        agendar = new JButton("Agendar");
-        agendar.setBounds(20, 150, 150, 30);
-        agendar.setFont(new Font("Arial", Font.BOLD, 15));
+        JButton agendar = new JButton("Criar Agendamento");
+        agendar.setBounds(10, 150, 150, 30);
+        agendar.setFont(new Font("Arial", Font.BOLD, 12));
         agendar.setForeground(new Color(0, 48, 73));
         add(agendar);
 
@@ -67,6 +66,21 @@ public class TelaAgendamentos extends JFrame {
                 Agendamentos agendamento = new Agendamentos(clienteselecionado, servicoSelecionado);
                 administrador.addAgendamento(agendamento);
                 JOptionPane.showMessageDialog(null, "Serviço Agendado!");
+            }
+        });
+
+        JButton editarRemover = new JButton("Remover Agendamentos");
+        editarRemover.setBounds(170, 150, 150, 30);
+        editarRemover.setFont(new Font("Arial", Font.BOLD, 12));
+        editarRemover.setForeground(new Color(0, 48, 73));
+        add(editarRemover);
+
+        editarRemover.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TelaRemoverAgendamentos telaEditarRemoverAgendamentos =
+                        new TelaRemoverAgendamentos(administrador);
+                telaEditarRemoverAgendamentos.setVisible(true);
             }
         });
 

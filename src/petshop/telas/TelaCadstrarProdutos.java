@@ -13,12 +13,11 @@ public class TelaCadstrarProdutos extends JFrame {
 
     private JTextField nomeProdutos;
     private JTextField valorProduto;
-    private JButton cadastrarProduto;
 
     public TelaCadstrarProdutos(Administrador administrador) {
 
         setTitle("Cadastro em Estoque");
-        setSize(380, 240);
+        setSize(390, 220);
         getContentPane().setBackground(new Color(102, 155, 188));
         setResizable(false);
         setLocationRelativeTo(null);
@@ -46,25 +45,41 @@ public class TelaCadstrarProdutos extends JFrame {
         valorProduto.setBounds(140, 90, 180, 25);
         add(valorProduto);
 
-        cadastrarProduto = new JButton("Cadastrar Produto");
-        cadastrarProduto.setBounds(15, 130, 140, 25);
+        JButton cadastrarProduto = new JButton("Cadastrar Produto");
+        cadastrarProduto.setBounds(10, 130, 170, 25);
         cadastrarProduto.setForeground(new Color(0, 48, 73));
-        cadastrarProduto.setFont(new Font("Arial", Font.BOLD, 11));
+        cadastrarProduto.setFont(new Font("Arial", Font.BOLD, 12));
         add(cadastrarProduto);
 
         cadastrarProduto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 String nomeProduto = nomeProdutos.getText();
                 double valor = Double.parseDouble(valorProduto.getText());
                 Produto produto = new Produto(nomeProduto,valor);
                 administrador.getEstoque().cadastrarProduto(produto);
-
-                JOptionPane.showMessageDialog(null,"Produto Cadastrado: " + produto.toString());
+                JOptionPane.showMessageDialog(null,
+                        "Produto Cadastrado: " + produto.toString());
                 nomeProdutos.setText("");
                 valorProduto.setText("");
             }
+        });
+
+        JButton editarProduto = new JButton("Editar/Remover Produto");
+        editarProduto.setBounds(190, 130, 170, 25);
+        editarProduto.setForeground(new Color(0, 48, 73));
+        editarProduto.setFont(new Font("Arial", Font.BOLD, 12));
+        add(editarProduto);
+
+        editarProduto.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TelaEditarRemoverProduto telaEditarRemoverProduto =
+                        new TelaEditarRemoverProduto(administrador);
+                telaEditarRemoverProduto.setVisible(true);
+
+            }
+
         });
 
     }

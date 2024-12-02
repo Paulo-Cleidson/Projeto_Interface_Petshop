@@ -63,15 +63,6 @@ public class ClientePadrao implements Cliente {
     }
 
     @Override
-    public String exibirPets() {
-        StringBuilder sb = new StringBuilder();
-        for(Pet pet: listaPetsCliente) {
-            sb.append(pet);
-        }
-        return sb.toString();
-    }
-
-    @Override
     public String toString() {
         return "Nome: "+nome + ", Email: "+email + ", CPF:"+cpf + ", Contato: "+contato +
                 ", Data de Nascimento: "+dataNascimento;

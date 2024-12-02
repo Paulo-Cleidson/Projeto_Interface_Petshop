@@ -22,7 +22,7 @@ public class TelaEditaPet extends JFrame {
     public TelaEditaPet(Administrador administrador) {
 
         setTitle("Editar Pets");
-        setSize(380, 380);
+        setSize(380, 370);
         getContentPane().setBackground(new Color(102, 155, 188));
         setResizable(false);
         setLocationRelativeTo(null);
@@ -123,7 +123,9 @@ public class TelaEditaPet extends JFrame {
                 epecieField.setText("");
                 racaField.setText("");
                 idadeField.setText("");
+
             }
+
         });
 
     }

@@ -1,6 +1,7 @@
 package petshop.modelos;
 
 public class Agendamentos {
+
     private Cliente cliente;
     private Servico servico;
     
@@ -27,7 +28,7 @@ public class Agendamentos {
 
     @Override
     public String toString() {
-        return "Agendamento P/ Cliente: "+cliente + ", Serviço: "+servico;
+        return "Cliente: "+cliente.getNome() + ", Serviço: "+servico.getTipo();
     }
     
 }

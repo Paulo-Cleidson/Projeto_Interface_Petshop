@@ -77,9 +77,9 @@ public class TelaCadastraCliente extends JFrame {
         add(dataField);
 
         cadastrarCliente = new JButton("Cadastrar Cliente");
-        cadastrarCliente.setBounds(15, 210, 130, 25);
+        cadastrarCliente.setBounds(15, 210, 140, 25);
         cadastrarCliente.setForeground(new Color(0, 48, 73));
-        cadastrarCliente.setFont(new Font("Arial", Font.BOLD, 11));
+        cadastrarCliente.setFont(new Font("Arial", Font.BOLD, 12));
         add(cadastrarCliente);
 
         cadastrarCliente.addActionListener(new ActionListener() {
@@ -106,7 +106,7 @@ public class TelaCadastraCliente extends JFrame {
         });
 
         cadastrarPet = new JButton("Cadastrar Pet");
-        cadastrarPet.setBounds(190, 210, 130, 25);
+        cadastrarPet.setBounds(190, 210, 140, 25);
         cadastrarPet.setForeground(new Color(0, 48, 73));
         cadastrarPet.setFont(new Font("Arial", Font.BOLD, 12));
         add(cadastrarPet);
@@ -120,7 +120,7 @@ public class TelaCadastraCliente extends JFrame {
         });
 
         editarCliente = new JButton("Editar Cliente");
-        editarCliente.setBounds(15, 240, 130, 25);
+        editarCliente.setBounds(15, 240, 140, 25);
         editarCliente.setForeground(new Color(0, 48, 73));
         editarCliente.setFont(new Font("Arial", Font.BOLD, 12));
         add(editarCliente);
@@ -134,7 +134,7 @@ public class TelaCadastraCliente extends JFrame {
         });
 
         editarPet = new JButton("Editar Pet");
-        editarPet.setBounds(190, 240, 130, 25);
+        editarPet.setBounds(190, 240, 140, 25);
         editarPet.setForeground(new Color(0, 48, 73));
         editarPet.setFont(new Font("Arial", Font.BOLD, 12));
         add(editarPet);
@@ -148,7 +148,7 @@ public class TelaCadastraCliente extends JFrame {
         });
 
         removerCliente = new JButton("Remover Cliente");
-        removerCliente.setBounds(15, 270, 130, 25);
+        removerCliente.setBounds(15, 270, 140, 25);
         removerCliente.setForeground(new Color(0, 48, 73));
         removerCliente.setFont(new Font("Arial", Font.BOLD, 12));
         add(removerCliente);
@@ -162,7 +162,7 @@ public class TelaCadastraCliente extends JFrame {
         });
 
         removerPet = new JButton("Remover Pet");
-        removerPet.setBounds(190, 270, 130, 25);
+        removerPet.setBounds(190, 270, 140, 25);
         removerPet.setForeground(new Color(0, 48, 73));
         removerPet.setFont(new Font("Arial", Font.BOLD, 12));
         add(removerPet);

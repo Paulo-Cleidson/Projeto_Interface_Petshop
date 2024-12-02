@@ -14,28 +14,21 @@ public class Estoque {
         return this.listaProdutos.size();
     }
 
-    public void editarProduto(Produto entradaProduto,String nome, int preco) {
-        for(Produto p: listaProdutos) {
-            if(p.getNomeProduto().equals(entradaProduto.getNomeProduto())) {
-                p.setNomeProduto(nome);
-                p.setPreco(preco);
+    public Produto verificaProduto(String string) {
+        for(Produto produto : listaProdutos){
+            if(produto.getNomeProduto().equals(string)){
+                return produto;
             }
         }
+        return null;
     }
 
     public void removerProduto(Produto produto) {
         listaProdutos.remove(produto);
     }
 
-    public String listarProdutos() {
-        StringBuilder sb = new StringBuilder();
-        for(Produto p: listaProdutos ) {
-            sb.append(p);
-        }
-        return sb.toString();
-    }
-
     public ArrayList<Produto> getListaProdutos() {
         return this.listaProdutos;
     }
+
 }

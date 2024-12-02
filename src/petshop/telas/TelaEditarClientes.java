@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 
 public class TelaEditarClientes extends JFrame {
 
-    private JButton confirmar;
     private JTextField nomeField;
     private JTextField emailField;
     private JTextField cpfField;
@@ -28,7 +27,7 @@ public class TelaEditarClientes extends JFrame {
 
         JLabel clientes = new JLabel("Lista de Clientes");
         clientes.setBounds(10, 8,200,25);
-        clientes.setFont(new Font("Poppins", Font.BOLD, 18));
+        clientes.setFont(new Font("Arial", Font.BOLD, 18));
         clientes.setForeground(new Color(0, 48, 73));
         add(clientes);
 
@@ -85,9 +84,9 @@ public class TelaEditarClientes extends JFrame {
         dataField.setBounds(140,225,180,25);
         add(dataField);
 
-        confirmar = new JButton("Confirmar");
+        JButton confirmar = new JButton("Confirmar");
         confirmar.setBounds(20, 280, 150, 30);
-        confirmar.setFont(new Font("Arial", Font.BOLD, 15));
+        confirmar.setFont(new Font("Arial", Font.BOLD, 12));
         confirmar.setForeground(new Color(0, 48, 73));
         add(confirmar);
 
@@ -112,7 +111,9 @@ public class TelaEditarClientes extends JFrame {
                 dataField.setText("");
                 JOptionPane.showMessageDialog(null,
                         "Os dados do Cliente foram atualizados");
+
             }
+
         });
 
     }
