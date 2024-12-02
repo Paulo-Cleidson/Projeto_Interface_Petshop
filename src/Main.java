@@ -3,6 +3,7 @@ import petshop.telas.TelaPrincipal;
 import petshop.controles.Administrador;
 
 public class Main {
+
     public static void main(String[] args) {
 
         Administrador petshop = new Administrador();
@@ -11,4 +12,5 @@ public class Main {
         tela.setVisible(true);
 
     }
+
 }

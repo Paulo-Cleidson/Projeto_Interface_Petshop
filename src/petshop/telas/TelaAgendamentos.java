@@ -18,7 +18,7 @@ public class TelaAgendamentos extends JFrame {
     public TelaAgendamentos(Administrador administrador) {
 
         setTitle("Cadastrar Agendamento");
-        setSize(360, 250);
+        setSize(380, 250);
         getContentPane().setBackground(new Color(102, 155, 188));
         setResizable(false);
         setLocationRelativeTo(null);
@@ -69,8 +69,8 @@ public class TelaAgendamentos extends JFrame {
             }
         });
 
-        JButton editarRemover = new JButton("Remover Agendamentos");
-        editarRemover.setBounds(170, 150, 150, 30);
+        JButton editarRemover = new JButton("Remover Agendamento");
+        editarRemover.setBounds(170, 150, 170, 30);
         editarRemover.setFont(new Font("Arial", Font.BOLD, 12));
         editarRemover.setForeground(new Color(0, 48, 73));
         add(editarRemover);

@@ -4,6 +4,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import petshop.controles.Administrador;
 import petshop.modelos.Cliente;
 import petshop.modelos.Produto;
@@ -30,7 +31,7 @@ public class TelaPrincipal extends JFrame {
         add(textoInicial);
 
         JButton areaCliente = new JButton("Área Clientes");
-        areaCliente.setBounds(270, 50, 200, 30);
+        areaCliente.setBounds(270, 70, 200, 30);
         areaCliente.setFont(new Font("Arial", Font.BOLD, 15));
         areaCliente.setForeground(new Color(0, 48, 73));
         add(areaCliente);
@@ -41,7 +42,7 @@ public class TelaPrincipal extends JFrame {
         });
 
         JButton exibirClientes = new JButton("Exibir Clientes");
-        exibirClientes.setBounds(500, 50, 200, 30);
+        exibirClientes.setBounds(500, 70, 200, 30);
         exibirClientes.setFont(new Font("Arial", Font.BOLD, 15));
         exibirClientes.setForeground(new Color(0, 48, 73));
         add(exibirClientes);
@@ -83,7 +84,7 @@ public class TelaPrincipal extends JFrame {
         });
 
         JButton exibirPets = new JButton("Exibir Pets");
-        exibirPets.setBounds(50, 200, 200, 30);
+        exibirPets.setBounds(50, 220, 200, 30);
         exibirPets.setFont(new Font("Arial", Font.BOLD, 15));
         exibirPets.setForeground(new Color(0, 48, 73));
         add(exibirPets);
@@ -97,7 +98,7 @@ public class TelaPrincipal extends JFrame {
         });
 
         JButton estoque = new JButton("Estoque");
-        estoque.setBounds(270, 100, 200, 30);
+        estoque.setBounds(270, 120, 200, 30);
         estoque.setFont(new Font("Arial", Font.BOLD, 15));
         estoque.setForeground(new Color(0, 48, 73));
         add(estoque);
@@ -111,7 +112,7 @@ public class TelaPrincipal extends JFrame {
         });
 
         JButton exibirEstoque = new JButton("Exibir Estoque");
-        exibirEstoque.setBounds(500, 100, 200, 30);
+        exibirEstoque.setBounds(500, 120, 200, 30);
         exibirEstoque.setFont(new Font("Arial", Font.BOLD, 15));
         exibirEstoque.setForeground(new Color(0, 48, 73));
         add(exibirEstoque);
@@ -147,7 +148,7 @@ public class TelaPrincipal extends JFrame {
         });
 
         JButton cadastrarServico = new JButton("Cadastrar Serviços");
-        cadastrarServico.setBounds(270, 150, 200, 30);
+        cadastrarServico.setBounds(270, 170, 200, 30);
         cadastrarServico.setFont(new Font("Arial", Font.BOLD, 15));
         cadastrarServico.setForeground(new Color(0, 48, 73));
         add(cadastrarServico);
@@ -173,7 +174,7 @@ public class TelaPrincipal extends JFrame {
         scrollServicos.setBounds(30, 300, 700, 230);
 
         JButton exibirServico = new JButton("Exibir Serviços");
-        exibirServico.setBounds(500, 150, 200, 30);
+        exibirServico.setBounds(500, 170, 200, 30);
         exibirServico.setFont(new Font("Arial", Font.BOLD, 15));
         exibirServico.setForeground(new Color(0, 48, 73));
         add(exibirServico);
@@ -197,7 +198,7 @@ public class TelaPrincipal extends JFrame {
         });
 
         JButton agendamentos = new JButton("Agendamentos");
-        agendamentos.setBounds(270, 200, 200, 30);
+        agendamentos.setBounds(270, 220, 200, 30);
         agendamentos.setFont(new Font("Arial", Font.BOLD, 15));
         agendamentos.setForeground(new Color(0, 48, 73));
         add(agendamentos);
@@ -223,7 +224,7 @@ public class TelaPrincipal extends JFrame {
         scrollAgendamentos.setBounds(30, 300, 700, 230);
 
         JButton exibirAgendamentos = new JButton("Exibir Agendamentos");
-        exibirAgendamentos.setBounds(500, 200, 200, 30);
+        exibirAgendamentos.setBounds(500, 220, 200, 30);
         exibirAgendamentos.setFont(new Font("Arial", Font.BOLD, 15));
         exibirAgendamentos.setForeground(new Color(0, 48, 73));
         add(exibirAgendamentos);
@@ -244,9 +245,30 @@ public class TelaPrincipal extends JFrame {
                     modelAgendamentos.addRow(new Object[]{administrador.getListaAgendamentos().
                             get(i).getCliente().getNome(), administrador.getListaAgendamentos().
                             get(i).getServico().getTipo()});
+
                 }
 
         });
+
+        // Caminho da imagem
+        String imagePath = "src/petshop/icons/logo.png";
+        // Carrega a imagem
+        ImageIcon imageIcon = new ImageIcon(imagePath);
+        // Redimensiona a imagem (opcional)
+        Image scaledImage = imageIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(scaledImage);
+        // Adiciona a imagem em um JLabel
+        JLabel labelImage = new JLabel(imageIcon);
+        labelImage.setBounds(60,50,180,180);
+        add(labelImage);
+
+        String imagemLogo = "src/petshop/icons/logo01.png";
+        ImageIcon imagemLogoIcon = new ImageIcon(imagemLogo);
+        Image scaledImagemLogo = imagemLogoIcon.getImage().getScaledInstance(150,50, Image.SCALE_SMOOTH);
+        imagemLogoIcon = new ImageIcon(scaledImagemLogo);
+        JLabel labelImagemLogo = new JLabel(imagemLogoIcon);
+        labelImagemLogo.setBounds(75,10,150,50);
+        add(labelImagemLogo);
 
     }
 
