@@ -65,8 +65,9 @@ public class TelaRemoverPet extends JFrame {
         removerPet.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // trabalho da p**** pra remover um pet :D
-                administrador.verificaCliente(String.valueOf(listaDeClientes.getSelectedItem())).removerPet(administrador.verificaCliente(String.valueOf(listaDeClientes.getSelectedItem())).verificaPet(String.valueOf(listaDePets.getSelectedItem())));
+                administrador.verificaCliente(String.valueOf(listaDeClientes.getSelectedItem())).
+                    removerPet(administrador.verificaCliente(String.valueOf(listaDeClientes.getSelectedItem())).
+                               verificaPet(String.valueOf(listaDePets.getSelectedItem())));
 
                 JOptionPane.showMessageDialog(null, "Pet Removido");
 
